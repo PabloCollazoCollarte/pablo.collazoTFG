@@ -1,0 +1,39 @@
+---
+name: release
+
+on:
+  pull_request:
+    types: [closed]
+    branches: ["main", "main-*"]
+
+jobs:
+  release:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Build Changelog
+        if: contains(github.event.pull_request.labels.*.name, 'kind/release')
+        id: github_release
+        uses: mikepenz/release-changelog-builder-action@v3
+        with:
+          configuration: "configuration.json"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get release version
+        id: get_version
+        if: contains(github.event.pull_request.labels.*.name, 'kind/release')
+        run: |
+          VERSION=$( echo "${{ github.event.pull_request.labels.*.name }}" | grep -E '^[[:digit:]]+.[[:digit:]]+.[[:digit:]]$')
+          if [[ -n $VERSION ]]; then
+            echo "::set-output name=version::$VERSION"
+          fi
+
+      - name: Create Release
+        if: contains(github.event.pull_request.labels.*.name, 'kind/release') && ${{ steps.get_version.outputs.version }}
+        uses: actions/create-release@v1.1.4
+        with:
+          tag_name: ${{ steps.get_version.outputs.version }}
+          release_name: ${{ steps.get_version.outputs.version }}
+          body: ${{steps.github_release.outputs.changelog}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
