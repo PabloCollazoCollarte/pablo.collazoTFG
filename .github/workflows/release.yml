@@ -26,11 +26,15 @@ jobs:
         id: get_version
         if: contains(github.event.pull_request.labels.*.name, 'kind/release')
         run: |
-          VERSION=$( echo "${{ github.event.pull_request.title }}" | grep -E '^[[:digit:]]+.[[:digit:]]+.[[:digit:]]$')
+          VERSION=$( echo "${{ github.event.pull_request.title }}" | grep -E '[[:digit:]]+.[[:digit:]]+.[[:digit:]]')
           if [[ -n $VERSION ]]; then
             echo "::set-output name=version::$VERSION"
           fi
 
+      - name: Not version added
+        if: ${{ !steps.get_version.outputs.version }}
+        run: |
+          echo "::error No version added"
       - name: Create Release
         if: contains(github.event.pull_request.labels.*.name, 'kind/release') && ${{ steps.get_version.outputs.version }}
         uses: actions/create-release@v1.1.4
