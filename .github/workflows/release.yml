@@ -35,11 +35,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          ref: develop
-
       - name: Set changes in develop branch
         run: |
           git config --local user.email "action@github.com"
@@ -48,5 +43,5 @@ jobs:
           git fetch --unshallow
           git checkout develop
           git pull
-          git merge --no-ff master -m "Auto-merge main back to develop"
+          git merge --no-ff main -m "Auto-merge main back to develop"
           git push
