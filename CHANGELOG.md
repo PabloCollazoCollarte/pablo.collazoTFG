@@ -1,3 +1,11 @@
+# Version: 0.8.0
+
+
+#### New Features
+
+* [#34](https://github.com/pablocollazoc/pablo.collazoTFG/pull/34): feat
+
+
 # Version: 0.7.1
 
 * [be45a56](https://github.com/pablocollazoc/pablo.collazoTFG/commit/be45a5653529ab7559dd4a751ba28979c2c4e04e): Auto-merge main back to develop
