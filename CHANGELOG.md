@@ -1,3 +1,11 @@
+# Version: 0.21.0
+
+
+#### Unlabeled Changes
+
+* [#92](https://github.com/pablocollazoc/pablo.collazoTFG/pull/92): Sincronizar desde main y develop
+
+
 # Version: 0.20.0
 
 

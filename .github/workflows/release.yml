@@ -58,7 +58,7 @@ jobs:
           git checkout -b automated/sync-from-${{ github.event.pull_request.number }}-to-develop
           git push --no-verify -u origin HEAD
           gh pr create \
-            --title "Sincronizar desde main y develop" \
+            --title "Sincronizar develop con main" \
             --base "$DEVELOP" \
             --body "**Pull Request automática** relacionada con #${{ github.event.pull_request.number }}"
 
