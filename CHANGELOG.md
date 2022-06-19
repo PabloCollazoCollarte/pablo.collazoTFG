@@ -1,3 +1,23 @@
+# Version: 0.17.0
+
+
+#### Hotfix
+
+* [#76](https://github.com/pablocollazoc/pablo.collazoTFG/pull/76): Release 0.15.1
+
+#### New Features
+
+* [#78](https://github.com/pablocollazoc/pablo.collazoTFG/pull/78): feat
+* [#81](https://github.com/pablocollazoc/pablo.collazoTFG/pull/81): feat
+
+#### Unlabeled Changes
+
+* [#75](https://github.com/pablocollazoc/pablo.collazoTFG/pull/75): Merge pull request #74 from pablocollazoc/develop
+* [#77](https://github.com/pablocollazoc/pablo.collazoTFG/pull/77): Main
+* [#79](https://github.com/pablocollazoc/pablo.collazoTFG/pull/79): Release 0.16.0
+* [#80](https://github.com/pablocollazoc/pablo.collazoTFG/pull/80): Merge pull request #79 from pablocollazoc/develop
+
+
 # Version: 0.16.0
 
 
