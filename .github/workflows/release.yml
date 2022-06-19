@@ -43,6 +43,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: ${{ github.base_ref }}
+
       - name: Set changes in develop branch
         if: ${{ github.event.pull_request.merged == true }}
         env:
