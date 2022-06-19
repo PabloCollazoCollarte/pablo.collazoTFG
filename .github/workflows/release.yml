@@ -15,7 +15,7 @@ jobs:
 
       - name: Get release version
         id: get_version
-        if: contains(github.event.pull_request.labels.*.name, 'kind/release')
+        if: contains(github.event.pull_request.labels.*.name, 'kind/release') && ${{ github.event.pull_request.merged == true }}
         run: |
           VERSION=$( echo "${{ github.event.pull_request.title }}" | grep -oE '[[:digit:]]+.[[:digit:]]+.[[:digit:]]')
           if [[ -n $VERSION ]]; then
@@ -27,7 +27,7 @@ jobs:
         run: |
           echo "::error No version added"
       - name: Create Release
-        if: contains(github.event.pull_request.labels.*.name, 'kind/release') && ${{ steps.get_version.outputs.version }}
+        if: contains(github.event.pull_request.labels.*.name, 'kind/release') && ${{ steps.get_version.outputs.version }} && ${{ github.event.pull_request.merged == true }}
         uses: actions/create-release@v1.1.4
         with:
           tag_name: ${{ steps.get_version.outputs.version }}
@@ -35,7 +35,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Build Changelog for hotfix changes
+        if: contains(github.event.pull_request.labels.*.name, 'kind/release') && startsWith(github.head_ref == "hotfix/") && ${{ github.event.pull_request.merged == true }}
+        uses: saadmk11/changelog-ci@v1.0.0
+        with:
+          config_file: "changelog-configuration.yml"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Set changes in develop branch
+        if: ${{ github.event.pull_request.merged == true }}
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
