@@ -1,3 +1,11 @@
+# Version: 0.15.1
+
+
+#### Unlabeled Changes
+
+* [#75](https://github.com/pablocollazoc/pablo.collazoTFG/pull/75): Merge pull request #74 from pablocollazoc/develop
+
+
 # Version: 0.16.0
 
 
