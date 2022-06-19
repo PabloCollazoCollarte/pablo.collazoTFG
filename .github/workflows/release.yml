@@ -45,7 +45,8 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-          git merge origin/main
-          git commit -m "Sync develop with main"
+          git fetch --unshallow
+          git checkout develop
+          git pull
+          git merge --no-ff master -m "Auto-merge main back to develop"
           git push
-
