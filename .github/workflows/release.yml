@@ -13,15 +13,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Build Changelog
-        if: contains(github.event.pull_request.labels.*.name, 'kind/release')
-        id: github_release
-        uses: saadmk11/changelog-ci@v1.0.0
-        with:
-          config_file: "changelog-configuration.yml"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Get release version
         id: get_version
         if: contains(github.event.pull_request.labels.*.name, 'kind/release')
@@ -41,9 +32,13 @@ jobs:
         with:
           tag_name: ${{ steps.get_version.outputs.version }}
           release_name: ${{ steps.get_version.outputs.version }}
-          body: ${{steps.github_release.outputs.changelog}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: develop
 
       - name: Set changes in develop branch
         run: |

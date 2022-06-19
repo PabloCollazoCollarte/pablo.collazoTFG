@@ -1,3 +1,14 @@
+# Version: 0.3.0
+
+* [8f18560](https://github.com/pablocollazoc/pablo.collazoTFG/commit/8f18560c2f0bd3f1b9cf32c12bbfbb423490cccf): feat (#19)
+* [24917c1](https://github.com/pablocollazoc/pablo.collazoTFG/commit/24917c13d1fc18f69f2233e2b76deec1cfe75956): Feature/1 (#18)
+
+* feat: test
+
+* fea
+* [b663151](https://github.com/pablocollazoc/pablo.collazoTFG/commit/b663151d6dedec9d520df10b5e85848a4a6bcf5f): feat: added sync commit
+
+
 # Version: 0.2.3
 
 * [51de692](https://github.com/pablocollazoc/pablo.collazoTFG/commit/51de692ff249d7dd4b58d17c8cccf463fa3b12f7): feat:test
