@@ -49,6 +49,5 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-          git checkout develop
           git merge --no-ff main -m "Auto-merge main back to develop"
           git push
