@@ -7,24 +7,24 @@ unlabeled_group_title: 'Unlabeled Changes'
 group_config:
   - title: Bug Fixes
     labels:
-      - bug
-      - bugfix
+      - kind/bug
+      - kind/bugfix
   - title: Hotfix
     labels:
-      - hotfix
+      - kind/hotfix
   - title: Code Improvements
     labels:
-      - improvements
-      - enhancement
+      - kind/improvements
+      - kind/enhancement
   - title: New Features
     labels:
-      - feature
-      - refactoring
+      - kind/feature
+      - kind/refactoring
   - title: Documentation Updates
     labels:
-      - docs
-      - documentation
-      - doc
+      - kind/docs
+      - kind/documentation
+      - kind/doc
   - title: Test
     labels:
-      - test
+      - kind/test
