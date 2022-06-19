@@ -1,3 +1,8 @@
+# Version: 0.7.1
+
+* [be45a56](https://github.com/pablocollazoc/pablo.collazoTFG/commit/be45a5653529ab7559dd4a751ba28979c2c4e04e): Auto-merge main back to develop
+
+
 # Version: 0.2.2
 
 * [099ccd6](https://github.com/pablocollazoc/pablo.collazoTFG/commit/099ccd64a56fd7e3e255863b9695eb0bb2784157): feat: test
