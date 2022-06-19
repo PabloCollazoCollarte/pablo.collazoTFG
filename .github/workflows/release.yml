@@ -16,7 +16,7 @@ jobs:
       - name: Build Changelog
         if: contains(github.event.pull_request.labels.*.name, 'kind/release')
         id: github_release
-        uses: saadmk11/changelog-ci@v.1.0.0
+        uses: saadmk11/changelog-ci@v1.0.0
         with:
           config_file: "changelog-configuration.yml"
         env:
