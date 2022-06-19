@@ -53,13 +53,12 @@ jobs:
         if: ${{ github.event.pull_request.merged == true }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_HEAD_REF: ${{ github.head_ref }}
         run: |
           DEVELOP=${BASELINE_BRANCH/main/develop}
           git checkout -b automated/sync-from-${{ github.event.pull_request.number }}-to-develop
           git push --no-verify -u origin HEAD
           gh pr create \
-            --title "Sincronizar desde $PR_HEAD_REF a develop" \
+            --title "Sincronizar desde main y develop" \
             --base "$DEVELOP" \
             --body "**Pull Request automática** relacionada con #${{ github.event.pull_request.number }}"
 
