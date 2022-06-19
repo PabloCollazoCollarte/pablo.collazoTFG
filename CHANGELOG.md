@@ -1,3 +1,15 @@
+# Version: 0.15.0
+
+
+#### New Features
+
+* [#69](https://github.com/pablocollazoc/pablo.collazoTFG/pull/69): update
+
+#### Unlabeled Changes
+
+* [#70](https://github.com/pablocollazoc/pablo.collazoTFG/pull/70): Hotfix/r
+
+
 # Version: 0.14.1
 
 
