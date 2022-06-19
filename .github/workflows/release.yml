@@ -45,12 +45,23 @@ jobs:
 
       - name: Set changes in develop branch
         if: ${{ github.event.pull_request.merged == true }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN_PUSH }}
+          PR_HEAD_REF: ${{ github.head_ref }}
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          DEVELOP=${BASELINE_BRANCH/main/develop}
+          git checkout -b automated/sync-from-${{ github.event.pull_request.number }}-to-develop
+          git push --no-verify -u origin HEAD
+          gh pr create \
+            --title "Sincronizar desde $PR_HEAD_REF a develop" \
+            --base "$DEVELOP" \
+            --body "**Pull Request automática** relacionada con #${{ github.event.pull_request.number }}"
 
-          git fetch
-          git checkout develop
-          git pull
-          git merge --no-ff main -m "Auto-merge main back to develop"
-          git push
+      - name: Add PR comment - On Failure
+        if: failure()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr comment ${{ github.event.number }} --body "
+          ### :exclamation: :exclamation: :exclamation: Sync to develop failure
+          - See the [workflow log](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}).
