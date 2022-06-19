@@ -10,17 +10,8 @@ jobs:
   release:
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout microflow project
+      - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Build Changelog
-        if: contains(github.event.pull_request.labels.*.name, 'kind/release')
-        id: github_release
-        uses: saadmk11/changelog-ci@v1.0.0
-        with:
-          config_file: "changelog-configuration.yml"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get release version
         id: get_version
@@ -41,6 +32,16 @@ jobs:
         with:
           tag_name: ${{ steps.get_version.outputs.version }}
           release_name: ${{ steps.get_version.outputs.version }}
-          body: ${{steps.github_release.outputs.changelog}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set changes in develop branch
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          git fetch --unshallow
+          git checkout develop
+          git pull
+          git merge --no-ff main -m "Auto-merge main back to develop"
+          git push
