@@ -12,12 +12,13 @@ jobs:
     steps:
       - name: Checkout microflow project
         uses: actions/checkout@v3
+
       - name: Build Changelog
         if: contains(github.event.pull_request.labels.*.name, 'kind/release')
         id: github_release
-        uses: mikepenz/release-changelog-builder-action@v3
+        uses: saadmk11/changelog-ci@v.1.0.0
         with:
-          configuration: "configuration.json"
+          config_file: "changelog-configuration.yml"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
