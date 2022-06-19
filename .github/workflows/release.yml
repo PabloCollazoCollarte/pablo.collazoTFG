@@ -10,7 +10,7 @@ jobs:
   release:
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout microflow project
+      - name: Checkout
         uses: actions/checkout@v3
 
       - name: Build Changelog
@@ -44,3 +44,13 @@ jobs:
           body: ${{steps.github_release.outputs.changelog}}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set changes in develop branch
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          git merge main
+          git commit -m "Sync develop with main"
+          git push
+
