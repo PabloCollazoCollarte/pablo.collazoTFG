@@ -36,7 +36,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Changelog for hotfix changes
-        if: ${{ contains(github.event.pull_request.labels.*.name, 'kind/release') && startsWith(github.head_ref == "hotfix/") && github.event.pull_request.merged == true }}
+        if: ${{ contains(github.event.pull_request.labels.*.name, 'kind/release') && startsWith(github.head_ref == 'hotfix/') && github.event.pull_request.merged == true }}
         uses: saadmk11/changelog-ci@v1.0.0
         with:
           config_file: "changelog-configuration.yml"
