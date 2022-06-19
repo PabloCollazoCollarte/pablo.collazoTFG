@@ -46,7 +46,7 @@ jobs:
       - name: Set changes in develop branch
         if: ${{ github.event.pull_request.merged == true }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN_PUSH }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_HEAD_REF: ${{ github.head_ref }}
         run: |
           DEVELOP=${BASELINE_BRANCH/main/develop}
