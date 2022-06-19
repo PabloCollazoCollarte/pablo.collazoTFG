@@ -1,3 +1,11 @@
+# Version: 0.19.0
+
+
+#### Unlabeled Changes
+
+* [#86](https://github.com/pablocollazoc/pablo.collazoTFG/pull/86): Sincronizar desde develop a develop
+
+
 # Version: 0.18.0
 
 
