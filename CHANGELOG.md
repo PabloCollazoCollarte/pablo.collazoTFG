@@ -1,3 +1,15 @@
+# Version: 0.20.0
+
+
+#### New Features
+
+* [#90](https://github.com/pablocollazoc/pablo.collazoTFG/pull/90): feat
+
+#### Unlabeled Changes
+
+* [#89](https://github.com/pablocollazoc/pablo.collazoTFG/pull/89): Merge pull request #87 from pablocollazoc/develop
+
+
 # Version: 0.19.0
 
 
